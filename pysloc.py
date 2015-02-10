@@ -14,7 +14,9 @@ def traverse(directory, exts):
         for file in files:
             for ext in exts:
                 if file.endswith("."+ext):
-                    f.append((root + file, count_sloc(root + "/" + file)))
+                    if file == "pysloc.py":
+                        continue
+                    f.append((root + "/" + file, count_sloc(root + "/" + file)))
     return f
 
 def tabulate_files(files):
